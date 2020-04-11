@@ -1,0 +1,63 @@
+@use 'sass:map';
+@use '../abstracts/mixins' as mix;
+@use '../abstracts/variables' as var;
+
+.card {
+  background-color: map-get(var.$theme, 'background');
+  border-bottom: 6px solid map-get(var.$theme, 'highlight');
+  border-radius: map-get(var.$sizing, 'radius');
+  box-shadow: map-get(var.$utilities, 'shadow');
+  color: map-get(var.$colors, 'black');
+  padding: map-get(var.$sizing, 'padding');
+  width: 100%;
+
+  @include mix.m(shadowed) {
+    box-shadow: 0 0 20px -8px rgba(map-get(var.$theme, 'stroke'), 0.3);
+  }
+
+  @include mix.m(no-border) {
+    border-bottom: none;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 7rem;
+  }
+
+  @include mix.e(header) {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  @include mix.e(cred) {
+    align-items: center;
+    display: flex;
+  }
+
+  @include mix.e(user-img) {
+    border-radius: 50%;
+    height: 3em;
+    margin-right: 1em;
+    object-fit: contain;
+    width: 3em;
+  }
+
+  @include mix.e(author) {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  @include mix.e(meta) {
+    color: lightslategray;
+    font-size: 1.5rem;
+  }
+
+  @include mix.e(img) {
+    box-shadow: map-get(var.$utilities, 'shadow');
+    margin-top: 2rem;
+    max-height: 350px;
+    object-fit: cover;
+    width: 100%;
+  }
+}

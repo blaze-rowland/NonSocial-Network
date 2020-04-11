@@ -9,10 +9,25 @@ Vue.use(VueRouter)
     name: 'Home',
     component: () => import('../views/Home.vue')
   },
+  {
+    path: '/feed',
+    name: 'Feed',
+    component: () => import('../views/Feed.vue')
+  },
+  {
+    path: '/auth/login',
+    name: 'Login',
+    component: () => import('../views/auth/Login.vue'),
+  },
+  {
+    path: '/auth/register',
+    name: 'Register',
+    component: () => import('../views/auth/Register.vue'),
+  },
 ];
 
 const router = new VueRouter({
-  routes
+  routes,
 });
 
 export default router;

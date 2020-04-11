@@ -1,0 +1,25 @@
+@use 'sass:map';
+@use '@/styles/abstracts/_variables' as var;
+@use '@/styles/abstracts/_mixins' as mix;
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: map-get(var.$sizing, 'radius');
+  cursor: pointer;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  font-weight: 500;
+
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
+  
+  @include mix.m(primary) {
+    background-color: map-get(var.$theme, 'button');
+    color: map-get(var.$theme, 'buttonText');
+  }
+
+  @include mix.m(secondary) {
+    border-color: map-get(var.$theme, 'stroke');
+  }
+}
