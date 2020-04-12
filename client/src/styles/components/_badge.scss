@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use '@/styles/abstracts/_variables' as var;
+@use '@/styles/abstracts/_mixins' as mix;
+
+.badge {
+    border-radius: 50px;
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 0.45rem 2.25rem;
+
+    @include mix.m(primary) {
+        background-color: map-get(var.$theme, 'tertiary');
+    }
+}

@@ -1,39 +1,53 @@
 <template>
-  <div class="card">
+  <div class="card" v-if="post">
     <div class="card__header">
       <div class="card__cred">
-        <!-- <img :src="post.user.image" alt="Profile Picture" class="card__user-img" v-if="post.user.image"> -->
-        <img src="https://avatars2.githubusercontent.com/u/27295533?s=460&u=9bc5a5cbfd2921e215455fbb7a6cee51f11c11f7&v=4" class="card__user-img" alt="">
+        <img :src="post.profile_image" alt="Profile Picture" class="card__user-img" v-if="post.profile_image">
         
-        <p class="card__author" v-if="post">
-          <!-- {{ post.user.name }} -->
-          Blaze Rowland
+        <p class="card__author" v-if="post.full_name">
+          {{ post.full_name }}
         </p>
       </div>
 
       <div class="card__meta">
-        <!-- <p>{{ post.created_at }}</p>   -->
-        <p>April 10th, 2020</p>
+        <p>{{ formatDate(post.post_created_at) }}</p>  
       </div>
     </div>
 
     <p class="card__body" v-if="post">
-      {{ post.body }}
+      {{ post.post_body }}
     </p>
     
     <!-- <img :src="post.image" alt="Post Image" class="card__img"> -->
-    <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" alt="Post Image" class="card__img">
+    <img :src="post.post_image + '.jpg'" alt="Post Image" class="card__img" v-if="post.post_image">
+
+    <div class="card__tag-container" v-if="post.tag_name">
+      <span class="badge badge--primary" :title="post.tag_description ? post.tag_description : ''">
+        {{ post.tag_name }}
+      </span>
+    </div>
   </div>
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
   props: ['post'],
   name: 'Post',
+  methods: {
+    formatDate(date) {
+      return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+    }
+  },
+  created() {
+    console.log(this.post);
+  },
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/components/_badge';
 @import '@/styles/components/_card';
 
 </style>

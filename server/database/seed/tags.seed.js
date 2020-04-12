@@ -4,10 +4,10 @@ async function seedTags() {
   await pool.promise()
   .query(`
     INSERT INTO Tags (
-      name,
-      description,
-      created_at,
-      updated_at
+      tag_name,
+      tag_description,
+      tag_created_at,
+      tag_updated_at
     )
     VALUES (
       'Architecture',

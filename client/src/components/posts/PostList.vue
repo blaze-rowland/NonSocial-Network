@@ -3,7 +3,8 @@
     <h1 class="page__title">
       Posts
     </h1>
-    <Post v-for="post in allPosts" :key="post.id" v-bind:post="post"/>
+    <!-- TODO: Why are post ids the same? -->
+    <Post v-for="post in allPosts" :key="post.post_id" v-bind:post="post"/>
   </div>
 </template>
 
@@ -23,7 +24,7 @@ export default {
   },
   computed: mapGetters(['allPosts']),
   created() {
-    this.fetchPosts()
+    this.fetchPosts();
   }
 }
 </script>

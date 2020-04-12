@@ -4,6 +4,7 @@ class Post {
     image,
     body,
     user_id,
+    tag_id,
     created_at,
     updated_at = '',
   ) { 
@@ -11,6 +12,7 @@ class Post {
     this.image = image;
     this.body = body;
     this.user_id = user_id;
+    this.tag_id = tag_id;
     this.created_at = created_at;
     this.updated_at = updated_at;
   }

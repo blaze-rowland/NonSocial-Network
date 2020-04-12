@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="create__action">
-      <button class="btn btn--primary" v-if="!creatingCard" @click="toggleCreate()">
+      <button class="btn btn--primary btn--lg" v-if="!creatingCard" @click="toggleCreate()">
         Create New
       </button>
     </div>
@@ -28,6 +28,13 @@
         </div>
 
         <div class="form__group">
+          <label for="tag" class="form__label">Tag</label>
+          <select name="tag" id="tag" v-model="tag_id" class="form__control">
+            <option :value="tag.tag_id" v-for="tag in allTags" :key="tag.tag_id">{{ tag.tag_name }}</option>
+          </select>
+        </div>
+
+        <div class="form__group">
           <label for="body" class="form__label">Post</label>
           <textarea 
             v-model="body"
@@ -48,22 +55,37 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'CreatePost',
   data() {
     return {
       image: '',
+      tag_id: '',
       body: '',
       error: null,
       creatingCard: false,
     }
   },
   methods: {
-    onCreatePost(e) {
+    ...mapActions(['createPost', 'fetchPosts', 'fetchTags']),
+    async onCreatePost(e) {
       e.preventDefault();
 
-      if (this.body || this.image) {
+      if (this.body || this.image || this.tag_id) {
         this.error = null;
+
+        await this.createPost(
+          {
+            body: this.body, 
+            image: this.image, 
+            tag_id: this.tag_id,
+            user_id: '1',
+          }
+        );
+
+        this.fetchPosts();
 
         console.log({
           body: this.body,
@@ -81,6 +103,10 @@ export default {
     toggleCreate() {
       this.creatingCard = !this.creatingCard;
     }
+  },
+  computed: mapGetters(['allTags']),
+  created() {
+    this.fetchTags();
   }
 }
 </script>
@@ -99,8 +125,13 @@ export default {
 
   @include mix.e(action) {
     display: flex;
-    justify-content: flex-end;
+    flex: 1 0 100%;
     margin-bottom: 2rem;
+    
+    .btn {
+      width: 100%;
+    }
+
   }
 }
 </style>

@@ -29,7 +29,7 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   @include mix.e(cred) {
@@ -61,5 +61,11 @@
     max-height: 350px;
     object-fit: cover;
     width: 100%;
+  }
+
+  @include mix.e(tag-container) {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
   }
 }
