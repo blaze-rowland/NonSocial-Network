@@ -1,28 +1,37 @@
 <template>
-  <div class="card card--no-border">
+  <div class="post-list">
     <h1 class="page__title">
       Posts
     </h1>
-    <Post v-for="post in posts" :key="post.id"/>
+    <Post v-for="post in allPosts" :key="post.id" v-bind:post="post"/>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 import Post from '@/components/posts/Post.vue';
 
 export default {
+  props: ['posts'],
   name: 'PostList',
-  data() {
-    return {
-      posts: [{id: '1'}, {id: '2'}, {id: '3'}]
-    }
-  },
   components: {
     Post
+  },
+  methods: {
+    ...mapActions(['fetchPosts']),
+  },
+  computed: mapGetters(['allPosts']),
+  created() {
+    this.fetchPosts()
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/styles/components/_card';
+
+.post-list {
+  // padding: 2.5rem 7rem;
+}
 </style>

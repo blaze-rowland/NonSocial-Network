@@ -13,7 +13,8 @@ export default {
   name: 'Feed',
   data() {
     return {
-      loggedIn: true
+      loggedIn: true,
+      posts: null,
     }
   },
   components: {
@@ -22,6 +23,6 @@ export default {
   },
   mounted() {
     if (!this.loggedIn) this.$router.push({ name: 'Home' });
-  }
+  },
 }
 </script>

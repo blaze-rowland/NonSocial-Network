@@ -12,7 +12,9 @@
   width: 100%;
 
   @include mix.m(shadowed) {
-    box-shadow: 0 0 20px -8px rgba(map-get(var.$theme, 'stroke'), 0.3);
+    box-shadow: 
+      0 0 20px -8px rgba(map-get(var.$theme, 'stroke'), 0.3),
+      0 4px 28px -4px rgba(map-get(var.$theme, 'stroke'), 0.2);
   }
 
   @include mix.m(no-border) {
