@@ -1,4 +1,4 @@
-// - DEPENDENCIES ------------------------------
+// - DEPENDENCIES -----------------------------
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -6,12 +6,12 @@ const morgan = require('morgan');
 const dotenv = require('dotenv').config();
 
 const app = express();
-const PORT = process.env.API_PORT || 3333;
+const PORT = process.env.API_PORT;
 
 // - MIDDLEWARE -------------------------------
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 morgan('combined');
 
 // -- IMPORTS ---------------------------------

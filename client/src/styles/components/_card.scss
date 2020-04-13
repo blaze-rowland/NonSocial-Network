@@ -11,10 +11,20 @@
   padding: map-get(var.$sizing, 'padding');
   width: 100%;
 
+  @include mix.m(link) {
+    transform: scale(1);
+    transition: all 0.2s ease;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+
   @include mix.m(shadowed) {
     box-shadow: 
-      0 0 20px -8px rgba(map-get(var.$theme, 'stroke'), 0.3),
-      0 4px 28px -4px rgba(map-get(var.$theme, 'stroke'), 0.2);
+      0 0 25px -7px rgba(map-get(var.$theme, 'stroke'), 0.1),
+      0 4px 28px -4px rgba(map-get(var.$theme, 'stroke'), 0.1);
   }
 
   @include mix.m(no-border) {

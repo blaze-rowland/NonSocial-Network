@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-if="post">
+  <div class="card card--shadowed card--link" v-if="post" ref="card">
     <div class="card__header">
       <div class="card__cred">
         <img :src="post.profile_image" alt="Profile Picture" class="card__user-img" v-if="post.profile_image">
@@ -40,14 +40,10 @@ export default {
       return moment(date).format('MMMM Do YYYY, h:mm:ss a');
     }
   },
-  created() {
-    console.log(this.post);
-  },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/styles/components/_badge';
 @import '@/styles/components/_card';
-
 </style>

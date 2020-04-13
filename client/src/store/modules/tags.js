@@ -14,7 +14,7 @@ const actions = {
     commit('setTags', response.data)
   },
   async createTag({commit}, tag) {
-    const response = await axios.tag('http://localhost:5000/api/tags/', tag);
+    const response = await axios.post('http://localhost:5000/api/tags/', tag);
     commit('addTag', response.data);
   }
 };

@@ -49,7 +49,7 @@
 @use "@/styles/abstracts/_mixins" as mix;
 
 .container {
-  padding: 0;
+  padding: 0 2.5rem;
 }
 
 .nav {

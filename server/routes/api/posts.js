@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../../database/db');
 
-const Post = require('../../models/post.model');
-
 
 // - GET ALL ----------------------------------
 router.get('/', (req, res) => {
@@ -77,16 +75,5 @@ router.delete('/:id', (req, res) => {
     (err, results, fields) => !err ? res.json(results) : res.status(500).send(err)
   );
 });
-
-
-
-
-router.get('/dummy', (req, res) => {
-  res.send([
-    new Post('1231', 'image.png', 'test body', '1', '1', new Date(Date()), new Date(Date())),
-    new Post('9813', 'image.png', 'test body 2', '1', '1', new Date(Date()), new Date(Date())),
-    new Post('5363', 'image.png', 'test body 3', '2', '1', new Date(Date()), new Date(Date())),
-  ]);
-})
 
 module.exports = router;

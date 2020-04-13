@@ -29,7 +29,7 @@ a {
 .container {
   max-width: map-get(variables.$sizing, 'container');
   margin: 2rem auto;
-  padding: 2.5rem 0;
+  padding: 2.5rem;
 }
 
 .page {

@@ -27,7 +27,23 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     const data = req.body;
 
-    console.log(data);
+    const tag = pool
+    .query(`
+      INSERT INTO Tags (
+        tag_name,
+        tag_description,
+        tag_created_at,
+        tag_updated_at
+      )
+      VALUES (
+        '${ data.name }',
+        '${ data.description }',
+        CURRENT_TIMESTAMP,
+        CURRENT_TIMESTAMP
+      )
+    `);
+
+  res.json(tag);
 });
 
 
