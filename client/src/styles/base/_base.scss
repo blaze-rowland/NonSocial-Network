@@ -10,7 +10,7 @@
 
 html { font-size: 62.5%; height: 100%; }
 
-body { background-color: map-get(variables.$theme, 'secondary'); height: 100%; line-height: 1.8;}
+body { background-color: map-get(variables.$theme, 'background'); height: 100%; line-height: 1.8;}
 
 body, ul, li, h1, h2, h3, h4, h5, h6, pre, a, p, ol {
   margin: 0;
@@ -34,8 +34,14 @@ a {
 
 .page {
   @include mix.e(title) {
-    font-size: 2.5rem;
-    font-weight: 400;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 2.5rem;
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 400;
+    }
   }
 }

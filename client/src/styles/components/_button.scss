@@ -21,6 +21,7 @@
   }
 
   @include mix.m(secondary) {
+    background-color: map-get(var.$colors, 'white');
     border-color: map-get(var.$theme, 'stroke');
   }
 

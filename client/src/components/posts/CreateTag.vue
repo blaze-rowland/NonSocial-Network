@@ -2,9 +2,11 @@
   <section>
     <transition name="slide">    
       <div class="card create">
-        <h1 class="page__title">
-          Create Tag
-        </h1>
+        <div class="page__title">
+          <h1>
+            Create Tag
+          </h1>
+        </div>
 
         <form @submit="onCreateTag($event)" class="form">
           <div class="alert alert--error" v-if="error">
@@ -34,7 +36,7 @@
           </div>
 
           <div class="form__actions">
-            <button class="btn btn--secondary" @click="onCancel()">Cancel</button>
+            <button class="btn btn--secondary" @click="onCancel($event)">Cancel</button>
             <input type="submit" class="btn btn--primary" value="Create Tag">
           </div>
         </form>
@@ -75,7 +77,8 @@ export default {
       setTimeout(() => this.error = null, 4000);
     },
 
-    onCancel() {
+    onCancel(e) {
+      e.preventDefault();
       this.$emit('cancelTag');
     },
 

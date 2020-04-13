@@ -3,7 +3,7 @@
 @use '../abstracts/variables' as var;
 
 .card {
-  background-color: map-get(var.$theme, 'background');
+  background-color: map-get(var.$theme, 'background-alt');
   border-bottom: 6px solid map-get(var.$theme, 'highlight');
   border-radius: map-get(var.$sizing, 'radius');
   box-shadow: map-get(var.$utilities, 'shadow');
@@ -32,7 +32,7 @@
   }
 
   &:not(:last-of-type) {
-    margin-bottom: 7rem;
+    margin-bottom: 5rem;
   }
 
   @include mix.e(header) {

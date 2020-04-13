@@ -1,0 +1,25 @@
+@use '@/styles/abstracts/_mixins' as mix;
+
+.display {
+  @include mix.c(flex) { display: flex !important; }
+}
+
+.align {
+  @include mix.c(items) {
+    @include mix.c(center) { align-items: center !important; }
+  }
+}
+
+.justify {
+  @include mix.c(content) {
+    @include mix.c(between) { justify-content: space-between !important; }
+  }
+}
+
+.cursor {
+  @include mix.c(pointer) { cursor: pointer !important; }
+}
+
+.text {
+  @include mix.c(semibold) { font-weight: 500 !important; }
+}

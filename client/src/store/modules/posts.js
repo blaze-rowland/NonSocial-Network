@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const state = {
-  posts: []
+  posts: [],
+  filterObj: {},
 };
 
 const getters = {
@@ -16,7 +17,7 @@ const actions = {
   async createPost({commit}, post) {
     const response = await axios.post('http://localhost:5000/api/posts/', post);
     commit('addPost', response.data);
-  }
+  },
 };
 
 const mutations = {

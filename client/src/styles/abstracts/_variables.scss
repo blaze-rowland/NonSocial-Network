@@ -1,7 +1,8 @@
 @use 'sass:map';
 
 $theme: (
-  background: #fffffe,
+  background: rgba(pink, 0.2),
+  background-alt: #fffffe,
   headline: #272343,
   paragraph: #2d334a,
   button: #ffd803,

@@ -2,7 +2,7 @@
   <section>
     <transition name="slide">   
       <div class="create__action">
-        <button class="btn btn--primary btn--lg" v-if="!creatingCard && !creatingTag" @click="toggleCreate()">
+        <button class="btn btn--primary btn--lg" v-if="!creatingCard && !creatingTag" @click="toggleCreate($event)">
           Create New
         </button>
       </div>
@@ -10,9 +10,11 @@
 
     <transition name="slide">    
       <div class="card create" v-if="creatingCard && !creatingTag">
-        <h1 class="page__title">
-          Create Post
-        </h1>
+        <div class="page__title">
+          <h1>
+            Create Post
+          </h1>
+        </div>
 
         <form @submit="onCreatePost($event)" class="form">
           <div class="alert alert--error" v-if="error">
@@ -53,7 +55,7 @@
           </div>
 
           <div class="form__actions">
-            <button class="btn btn--secondary" @click="toggleCreate()">Cancel</button>
+            <button class="btn btn--secondary" @click="toggleCreate($event)">Cancel</button>
             <input type="submit" class="btn btn--primary" value="Create Post">
           </div>
         </form>
@@ -117,7 +119,8 @@ export default {
       this.creatingTag = false;
     },
 
-    toggleCreate() {
+    toggleCreate(e) {
+      e.preventDefault();
       this.creatingTag = false;
       this.creatingCard = !this.creatingCard;
     },
