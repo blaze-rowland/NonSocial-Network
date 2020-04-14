@@ -8,13 +8,13 @@ registerApi(passport);
 loginApi(passport);
 
 router.post('/register', 
-  passport.authenticate('local-register', { failureMessage: 'failed to register' }),
+  passport.authenticate('local-register', { failureMessage: 'failed to register', successRedirect: '/#/feed' }),
   (req, res) => {
     res.json({ msg: 'User Registered!' });
 });
 
 router.post('/login', 
-  passport.authenticate('local-login', { failureMessage: 'failed to login' }),
+  passport.authenticate('local-login', { failureMessage: 'failed to login', successRedirect: '/#/feed' }),
   (req, res) => {
     res.json(req.user);
 });

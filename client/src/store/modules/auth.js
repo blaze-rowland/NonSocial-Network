@@ -29,8 +29,17 @@ const actions = {
   },
 
   async loginCurrentUser({commit}, user) {
-    const response = await axios.post(`http://localhost:5000/api/auth/login`, user);
-    commit('setCurrentUser', response.data);
+    return new Promise((resolve, reject) => {
+      axios.post(`http://localhost:5000/api/auth/login`, user)
+        .then(loggedInUser => {
+          commit('setCurrentUser', { fullName: user.fullName, email: user.email, profilePhoto: user.profile_photo });
+          resolve(loggedInUser);
+        })
+        .catch(err => {
+          console.error(err);
+          reject(err);
+        })
+    });
   },
   
   async logoutCurrentUser({commit}) {

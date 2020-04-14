@@ -116,8 +116,10 @@ export default {
       }, 4000);
     },
 
-    registerUser(user) {
-      this.createUser(user);
+    async registerUser(user) {
+      await this.createUser(user)
+        .then(() => this.$router.push('feed'))
+        .catch(err => this.error = `A user with the email: ${this.email} already exists`);
     }
   },
 }

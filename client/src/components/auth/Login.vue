@@ -79,7 +79,9 @@ export default {
     },
 
     loginUser(user) {
-      this.loginCurrentUser(user);
+      this.loginCurrentUser(user)
+        .then(data => this.$router.push('/feed'))
+        .catch(err => this.error = `Hmm.. Couldn't find that user.`);
     }
   }
 };
