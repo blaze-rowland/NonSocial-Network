@@ -15,9 +15,6 @@ export default {
   name: 'RegisterView',
   components: {
     Register
-  },
-  mounted() {
-    console.log('here');
   }
 }
 </script>

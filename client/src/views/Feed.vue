@@ -13,16 +13,12 @@ export default {
   name: 'Feed',
   data() {
     return {
-      loggedIn: true,
       posts: null,
     }
   },
   components: {
     CreatePost,
     PostList,
-  },
-  mounted() {
-    if (!this.loggedIn) this.$router.push({ name: 'Home' });
   },
 }
 </script>
