@@ -44,6 +44,8 @@
 </style>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Login',
   data() {
@@ -54,13 +56,15 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['loginCurrentUser']),
+
     onLogin(e) {
       e.preventDefault();
 
       if (this.email && this.password) {
         this.error = null;
 
-        console.log({
+        this.loginUser({
           email: this.email,
           password: this.password,
         });
@@ -72,6 +76,10 @@ export default {
       setTimeout(() => {
         this.error = null;
       }, 4000);
+    },
+
+    loginUser(user) {
+      this.loginCurrentUser(user);
     }
   }
 };

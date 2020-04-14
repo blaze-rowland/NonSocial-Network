@@ -11,20 +11,31 @@
       </div>
 
       <div class="form__group">
-        <label for="name" class="form__label">Name</label>
+        <label for="fullName" class="form__label">Full Name</label>
         <input 
-          v-model="name"
-          type="name" 
-          id="name" 
+          v-model="fullName"
+          type="text" 
+          id="fullName" 
           class="form__control"
         >
       </div>
+
       <div class="form__group">
         <label for="email" class="form__label">Email</label>
         <input 
           v-model="email"
           type="email" 
           id="email" 
+          class="form__control"
+        >
+      </div>
+      
+      <div class="form__group">
+        <label for="profilePhoto" class="form__label">Profile Photo</label>
+        <input 
+          v-model="profilePhoto"
+          type="text" 
+          id="profilePhoto" 
           class="form__control"
         >
       </div>
@@ -43,7 +54,7 @@
         <label for="password2" class="form__label">Confirm Password</label>
         <input 
           v-model="confirmPassword"
-          type="password2" 
+          type="password" 
           id="password2" 
           class="form__control"
         >
@@ -63,22 +74,27 @@
 </style>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Register',
   data() {
     return {
-      name: '',
+      fullName: '',
       email: '',
+      profilePhoto: '',
       password: '',
       confirmPassword: '',
-      error: null
+      error: null,
     }
   },
   methods: {
+    ...mapActions(['createUser']),
+
     onRegister(e) {
       e.preventDefault();
 
-      if (!this.name || !this.email || !this.password || !this.confirmPassword) {
+      if (!this.fullName || !this.email || !this.password || !this.confirmPassword) {
         this.error = 'All fields are required';
       } 
       else if (this.password !== this.confirmPassword) {
@@ -87,18 +103,22 @@ export default {
       else {
         this.error = null;
 
-        console.log({
-          name: this.name,
-          email: this.email,
+        this.registerUser({
+          fullName: this.fullName, 
+          email: this.email, 
+          profilePhoto: this.profilePhoto, 
           password: this.password,
-          confirmPassword: this.confirmPassword
         });
       }
       
       setTimeout(() => {
         this.error = null;
       }, 4000);
+    },
+
+    registerUser(user) {
+      this.createUser(user);
     }
-  }
+  },
 }
 </script>

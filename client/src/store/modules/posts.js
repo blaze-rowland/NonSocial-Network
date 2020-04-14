@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const state = {
   posts: [],
-  filterObj: {},
 };
 
 const getters = {

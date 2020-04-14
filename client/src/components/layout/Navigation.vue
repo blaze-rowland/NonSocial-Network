@@ -9,7 +9,7 @@
         </li>
       </ul>
 
-      <ul class="nav__list" v-if="loggedIn">
+      <ul class="nav__list" v-if="false">
         <li class="nav__item">
           <router-link class="nav__link" to="/feed" exact>
             Feed
@@ -27,7 +27,7 @@
         </li>
       </ul>
 
-      <ul class="nav__list" v-if="!loggedIn">
+      <ul class="nav__list" v-if="true">
         <li class="nav__item">
           <router-link class="nav__link" to="/auth/login" exact>
             Login
@@ -90,13 +90,9 @@
 </style>
 
 <script>
+
 export default {
   name: 'Navigation',
-  data() {
-    return {
-      loggedIn: true,
-    }
-  },
   methods: {
     logout: () => {
       console.log('logout');
