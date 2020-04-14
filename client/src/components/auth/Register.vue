@@ -31,11 +31,11 @@
       </div>
       
       <div class="form__group">
-        <label for="profilePhoto" class="form__label">Profile Photo</label>
+        <label for="profileImage" class="form__label">Profile Photo</label>
         <input 
-          v-model="profilePhoto"
+          v-model="profileImage"
           type="text" 
-          id="profilePhoto" 
+          id="profileImage" 
           class="form__control"
         >
       </div>
@@ -82,7 +82,7 @@ export default {
     return {
       fullName: '',
       email: '',
-      profilePhoto: '',
+      profileImage: '',
       password: '',
       confirmPassword: '',
       error: null,
@@ -106,7 +106,7 @@ export default {
         this.registerUser({
           fullName: this.fullName, 
           email: this.email, 
-          profilePhoto: this.profilePhoto, 
+          profileImage: this.profileImage, 
           password: this.password,
         });
       }

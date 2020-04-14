@@ -30,8 +30,8 @@ module.exports = function(passport) {
           } else {
             const newUser = new CreateUserModel();
             newUser.user_id = null;
-            newUser.fullName = req.body.fullName;
-            newUser.profilePhoto = req.body.profilePhoto;
+            newUser.full_name = req.body.fullName;
+            newUser.profile_image = req.body.profileImage;
             newUser.email = email;
             newUser.password = password; 
           
@@ -47,9 +47,9 @@ module.exports = function(passport) {
                   user_created_at,
                   user_updated_at
                 ) VALUES (
-                  '${newUser.fullName}',
+                  '${newUser.full_name}',
                   '${newUser.email}',
-                  '${newUser.profilePhoto}',
+                  '${newUser.profile_image}',
                   '${hashPass}',
                   CURRENT_TIMESTAMP,
                   CURRENT_TIMESTAMP

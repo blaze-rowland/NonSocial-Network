@@ -1,34 +1,34 @@
 class User {
   constructor(
-    userId,
-    fullName,
+    user_id,
+    full_name,
     email,
-    profileImage,
+    profile_image,
     password,
-    userCreatedAt,
-    userUpdatedAt
+    user_created_at,
+    user_updated_at
   ) {
-    this.userId = userId;
-    this.fullName = fullName;
+    this.user_id = user_id;
+    this.full_name = full_name;
     this.email = email;
-    this.profileImage = profileImage;
+    this.profile_image = profile_image;
     this.password = password;
-    this.userCreatedAt = userCreatedAt;
-    this.userUpdatedAt = userUpdatedAt;
+    this.user_created_at = user_created_at;
+    this.user_updated_at = user_updated_at;
   }
 };
 
 class CreateUserModel {
   constructor(
-    userId = null,
-    fullName,
-    profilePhoto,
+    user_id = null,
+    full_name,
+    profile_image,
     email,
     password
   ) {
-    this.userId = userId;
-    this.fullName = fullName;
-    this.profileImage = profilePhoto;
+    this.user_id = user_id;
+    this.full_name = full_name;
+    this.profile_image = profile_image;
     this.email = email;
     this.password = password;
   }
@@ -36,19 +36,19 @@ class CreateUserModel {
 
 class UserViewModel {
   constructor(
-    userId,
-    fullName,
+    user_id,
+    full_name,
     email,
-    profileImage,
-    userCreatedAt,
-    userUpdatedAt
+    profile_image,
+    user_created_at,
+    user_updated_at
   ) {
-    this.userId = userId;
-    this.fullName = fullName;
+    this.user_id = user_id;
+    this.full_name = full_name;
     this.email = email;
-    this.profileImage = profileImage;
-    this.userCreatedAt = userCreatedAt;
-    this.userUpdatedAt = userUpdatedAt;
+    this.profile_image = profile_image;
+    this.user_created_at = user_created_at;
+    this.user_updated_at = user_updated_at;
   }
 };
 

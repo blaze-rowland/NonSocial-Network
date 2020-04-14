@@ -2,6 +2,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const pool = require('../../../database/db');
 const bcrypt = require('bcrypt');
 
+const { UserViewModel } = require('../../../models/user.model');
+
 module.exports = function(passport) {
   passport.serializeUser((user, done) => {
     done(null, user.user_id);
@@ -32,7 +34,19 @@ module.exports = function(passport) {
             if (err) throw new Error(err);
 
             if (res === true) {
-              return done(null, rows[0])
+              const user = rows[0];
+              console.log(user);
+
+              const loggedInUser = new UserViewModel(
+                user.user_id,
+                user.full_name,
+                user.email,
+                user.profile_image,
+                user.user_created_at,
+                user.user_user_updated_at,
+              );
+
+              return done(null, loggedInUser)
             } else {
               return done(null, false);
             }
